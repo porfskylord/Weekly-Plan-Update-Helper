@@ -3,7 +3,7 @@
 A tool designed exclusively for **Eazy ERP Technology Pvt Ltd** to streamline the process of updating and sending weekly plans. This tool allows users to input their weekly plan in an Excel format and automatically send it to the reporting manager every **Friday evening**.  
 
 ## 🌟 Live Demo  
-🔗 [Weekly Plan Update Helper](https://porfskylord.github.io/Weekly-Plan-Update-Helper/)  
+🔗 [Weekly Plan Update Helper]([https://porfskylord.github.io/Weekly-Plan-Update-Helper/](https://script.google.com/a/macros/eazyerp.com/s/AKfycbw6zDCcVIAEyc9XZihGKpc3FiHDfDWCrSWwks8VrNQrZkZjzGoaPgaTRV4Kdx5ete652w/exec))  
 
 ## 🚀 Features  
 - **Excel File**: Create Input for weekly plans excel in a suitable format.  

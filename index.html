@@ -5,214 +5,265 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEEKLY PLAN INPUT</title>
     <style>
+        /* Dark Theme Styles */
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 20px;
-            background-image: url('grad.png');
-            color: #333;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-        }
-		.content{
-			width:1200px;
-			background: white;
-			padding:20px;
-			height: 100%;
-			border-radius: 8px;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		}
-        h2 {
-            color: #845EC2;
-            text-align: center;
-        }
-        p {
-            text-align: center;
-            font-size: 1rem;
-        }
-        input {
-            margin: 10px 0;
-            padding: 12px;
-            width: 100%;
-            max-width: 800px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-		#viewcontainer{
-			display: flex;
-			width: 97%;
-			flex-direction: row;
-			gap:15px;
-			margin-bottom: 20px;
-			justify-content: center;
-			align-items: center;
-		}
-	
-        button {
-            padding: 12px;
-            width: 100%;
-            max-width: 200px;
-            background-color: #00c9a7;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #845EC2;
-        }
-        .action-buttons {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #E0E0E0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background: #1E1E1E;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+
+        }
+
+        h2 {
+            color: #BB86FC;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #B0B0B0;
+            font-size: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+			padding:10px;
+			border-radius: 8px;
+        }
+
+        input {
+            padding: 12px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #333;
+            background-color: #2A2A2A;
+            color: #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border-color: #BB86FC;
+            outline: none;
+        }
+				
+		/* Task Type & Task Status Dropdown Styling */
+		#taskType,
+		#taskStatus {
+			padding: 12px;
+			width: 220px;
+			border: none;
+			background-color: #2A2A2A;
+			color: #BB86FC;
+			border-radius: 8px;
+			font-size: 1rem;
+			transition: all 0.3s ease;
+			appearance: none;
+			cursor: pointer;
+			font-weight: bold;
+			text-align: center;
+
+			/* Custom arrow */
+			background-image: url('data:image/svg+xml;utf8,<svg fill="%23BB86FC" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+			background-repeat: no-repeat;
+			background-position: right 12px center;
+			background-size: 16px;
+		}
+
+		/* Focus Effect */
+		#taskType:focus, 
+		#taskStatus:focus {
+			border: 2px solid #BB86FC;
+			outline: none;
+			background-color: #333;
+		}
+
+		/* Custom Styling for Dropdown Options */
+		#taskType option, 
+		#taskStatus option {
+			background: #2A2A2A; /* Dark background */
+			color: #E0E0E0; /* White text */
+			padding: 12px;
+		}
+
+
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #BB86FC;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #9B59FF;
+        }
+
+        .btn-secondary {
+            background-color: #03DAC6;
+            color: white;
+			width: 140px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #00BFA5;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-top: 20px;
         }
-        .action-buttons button {
-            max-width: 200px;
-        }
+        #pushtoexcel:disabled {
+		        background-color: #7A687F;
+			      cursor: not-allowed;
+			      opacity: 0.7;
+		    }
+
         table {
             width: 100%;
-            margin: 20px 0;
+            margin-top: 20px;
             border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
         }
+
         th, td {
             padding: 15px;
             text-align: left;
-            border: 1px solid #ddd;
+            border-bottom: 1px solid #333;
         }
+
         th {
-            background-color: #d65db1;
-            color: white;
+            background-color: #BB86FC;
+            color: #121212;
         }
+
         td {
-            background-color: #f9f9f9;
+            background-color: #2A2A2A;
         }
-        td:nth-child(odd) {
-            background-color: #f1f1f1;
-        }
-        th:nth-child(2), td:nth-child(2) {
-            width: 40%;
-        }
-        td {
-            word-wrap: break-word;
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            input {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-<div class = "content">
-<h2>EXCEL INPUT GENERATER</h2>
-<p>Enter input in the following format: Task ID, Task Description, Client, Task Type (B for Backend Changes, C for Customization, E for Enhancement).</p>
+    <div class="container">
+        <h2>EXCEL INPUT GENERATOR</h2>
+        <p>Enter Task ID, Task Description, Client In Comma Separated String </p>
 
-<div id="viewcontainer">
-<input type="text" id="inputString" placeholder="Enter values">
-<button id = "Generateb" onclick="generateTable()">Generate Table</button>
-</div>
-<div id="tableContainer"></div>
+		<div class="input-group">
+			<input type="text" id="inputString" placeholder="Enter values">
+			<select id="taskType">
+				<option value="">Select Task Type</option>
+				<option value="Backend Changes">Backend Changes</option>
+				<option value="Customization">Customization</option>
+				<option value="Enhancement">Enhancement</option>
+				<option value="Bugs">Bugs</option>
+			</select>
 
-<div class="action-buttons">
-    <button onclick="refreshPage()">Refresh</button>
-    <button onclick="copyTableData()">Copy Table Data</button>
-</div>
+			<select id="taskStatus">
+				<option value="">Select Task Status</option>
+				<option value="Under Testing">Under Testing</option>
+				<option value="Completed">Completed</option>
+				<option value="Under Support">Under Support</option>
+				<option value="Not Feasible">Not Feasible</option>
+				<option value="Holded For Update">Holded For Update</option>
+				<option value="Work In Progress">Work In Progress</option>
+			</select>
+
+
+			<button class="btn" onclick="generateTable()">Generate Table</button>
+		</div>
+
+
+
+        <div id="tableContainer"></div>
+
+        <div class="btn-group">
+            <button class="btn btn-secondary" onclick="refreshPage()">Refresh</button>
+			      <button class="btn" id="pushtoexcel" onclick="pushToSheet()" disabled>Push to Excel</button>
+        </div>
+    </div>
 
 <script>
+    let taskData = [];
+
     function generateTable() {
-        const input = document.getElementById('inputString').value;
+        const input = document.getElementById('inputString').value.trim();
         const fields = input.split(',');
 
-        if (fields.length !== 4) {
-            alert('Please enter exactly 4 comma-separated values!');
+        if (fields.length !== 3) {
+            alert('Please enter exactly 3 comma-separated values!');
             return;
         }
 
-        const [taskId, taskDescription, client, taskTypeCode] = fields.map(field => field.trim());
+        const [taskId, taskDescription, client] = fields.map(field => field.trim());
 
-        // Map task type codes to full descriptions
-        const taskTypeMap = {
-            B: 'Backend Changes',
-            C: 'Customization',
-            E: 'Enhancement',
-			I: 'Bugs'
-        };
+       
 
-        const taskType = taskTypeMap[taskTypeCode.toUpperCase()];
-        if (!taskType) {
-            alert('Invalid Task Type code! Use B for Backend Changes, C for Customization, or E for Enhancement.');
-            return;
-        }
+		let taskTypeValue = document.getElementById("taskType").value;
+		let taskStatusValue = document.getElementById("taskStatus").value;
+        
+
+        taskData = [`Task #${taskId}`, taskDescription, 'Eazy ERP', client.toUpperCase(), taskTypeValue, 'Azad', taskStatusValue, 'N/A'];
 
         const tableContainer = document.getElementById('tableContainer');
+        tableContainer.innerHTML = `<table>
+            <tr><th>Task ID</th><th>Task Description</th><th>Product</th><th>Client</th><th>Task Type</th><th>Responsible Person</th><th>Status</th><th>Remarks</th></tr>
+            <tr><td>${taskData.join('</td><td>')}</td></tr>
+        </table>`;
+        document.getElementById('pushtoexcel').disabled = false;
+    }
 
-        // Clear any previous table
-        tableContainer.innerHTML = '';
 
-        // Create table
-        const table = document.createElement('table');
-        const headerRow = document.createElement('tr');
-        const headers = ['Task ID', 'Task Description', 'Product', 'Client', 'Task Type', 'Responsible Person', 'Status', 'Remarks'];
 
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.textContent = header;
-            headerRow.appendChild(th);
-        });
-
-        table.appendChild(headerRow);
-
-        // Add data row
-        const dataRow = document.createElement('tr');
-        const values = [
-            `Task #${taskId}`,
-            taskDescription,
-            'Eazy ERP',
-            client.toUpperCase(),
-            taskType,
-            'Azad',
-            'Work In Progress',
-            'N/A'
-        ];
-
-        values.forEach(value => {
-            const td = document.createElement('td');
-            td.textContent = value;
-            dataRow.appendChild(td);
-        });
-
-        table.appendChild(dataRow);
-
-        // Append table to container
-        tableContainer.appendChild(table);
+    function pushToSheet() {
+        google.script.run.appendToCurrentWeekSheet(taskData);
+        alert("Data sent to Google Sheets!");
+		refreshPage();
     }
 
     function refreshPage() {
         document.getElementById('inputString').value = '';
+        document.getElementById("taskType").value= "";
+        document.getElementById("taskStatus").value = "";
         document.getElementById('tableContainer').innerHTML = '';
-    }
+        document.getElementById('pushtoexcel').disabled = true;
 
-    function copyTableData() {
-        const table = document.querySelector('#tableContainer table');
-        if (!table) {
-            alert('No table to copy!');
-            return;
-        }
-
-        let tableText = '';
-        for (const row of table.rows) {
-            if (row.rowIndex === 0) continue; // Skip header row
-            const cells = Array.from(row.cells).map(cell => cell.textContent);
-            tableText += cells.join('\t') + '\n';
-        }
-
-        navigator.clipboard.writeText(tableText).then(() => {
-            alert('Table data copied to clipboard!');
-        }).catch(err => {
-            alert('Failed to copy table data.');
-            console.error(err);
-        });
     }
 </script>
 

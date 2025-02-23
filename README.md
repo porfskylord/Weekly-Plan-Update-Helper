@@ -4,6 +4,7 @@ A tool designed exclusively for **Eazy ERP Technology Pvt Ltd** to streamline th
 
 ## 🌟 Live Demo  
 🔗 [Weekly Plan Update Helper]([https://porfskylord.github.io/Weekly-Plan-Update-Helper/](https://script.google.com/a/macros/eazyerp.com/s/AKfycbw6zDCcVIAEyc9XZihGKpc3FiHDfDWCrSWwks8VrNQrZkZjzGoaPgaTRV4Kdx5ete652w/exec))  
+https://script.google.com/a/macros/eazyerp.com/s/AKfycbw6zDCcVIAEyc9XZihGKpc3FiHDfDWCrSWwks8VrNQrZkZjzGoaPgaTRV4Kdx5ete652w/exec
 
 ## 🚀 Features  
 - **Excel File**: Create Input for weekly plans excel in a suitable format.  

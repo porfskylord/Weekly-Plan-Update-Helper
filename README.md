@@ -1,4 +1,4 @@
-## 🌟 Notice
+## 🪧 NOTICE
 
 This only works if you upload these files on **Google Apps Script**.
 
@@ -32,9 +32,7 @@ To set up the project:
 3. **Update Permissions:**  
    - Ensure the script has permission to send emails and access the uploaded files.
 
-4. **Deploy and Share:**  
-   - Share the web app URL with Eazy ERP employees for use.
 
-## 📧 Support  
-For any issues or queries, contact the **IT Support Team** at **Eazy ERP Technology Pvt Ltd**.
+
+
 

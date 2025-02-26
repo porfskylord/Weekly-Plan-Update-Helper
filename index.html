@@ -15,22 +15,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            max-height: 100%;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
+            margin-top: 30px;
             background: #1E1E1E;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             text-align: center;
+            max-height:100%;
 
         }
 
         h2 {
-            color: #BB86FC;
+            background: linear-gradient(135deg, #bb86fc, #7564ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-weight: bold;
             margin-bottom: 10px;
         }
 
@@ -44,8 +50,8 @@
             justify-content: center;
             gap: 10px;
             margin-top: 15px;
-			padding:10px;
-			border-radius: 8px;
+            padding:10px;
+            border-radius: 8px;
         }
 
         input {
@@ -65,50 +71,50 @@
             outline: none;
         }
 				
-		/* Task Type & Task Status Dropdown Styling */
-		#taskType,
-		#taskStatus {
-			padding: 12px;
-			width: 220px;
-			border: none;
-			background-color: #2A2A2A;
-			color: #BB86FC;
-			border-radius: 8px;
-			font-size: 1rem;
-			transition: all 0.3s ease;
-			appearance: none;
-			cursor: pointer;
-			font-weight: bold;
-			text-align: center;
+        /* Task Type & Task Status Dropdown Styling */
+        #taskType,
+        #taskStatus {
+          padding: 12px;
+          width: 220px;
+          border: none;
+          background-color: #2A2A2A;
+          color: #BB86FC;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          appearance: none;
+          cursor: pointer;
+          font-weight: bold;
+          text-align: center;
 
-			/* Custom arrow */
-			background-image: url('data:image/svg+xml;utf8,<svg fill="%23BB86FC" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-			background-repeat: no-repeat;
-			background-position: right 12px center;
-			background-size: 16px;
-		}
+          /* Custom arrow */
+          background-image: url('data:image/svg+xml;utf8,<svg fill="%23BB86FC" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+          background-repeat: no-repeat;
+          background-position: right 12px center;
+          background-size: 16px;
+        }
 
-		/* Focus Effect */
-		#taskType:focus, 
-		#taskStatus:focus {
-			border: 2px solid #BB86FC;
-			outline: none;
-			background-color: #333;
-		}
+        /* Focus Effect */
+        #taskType:focus, 
+        #taskStatus:focus {
+          border: 2px solid #BB86FC;
+          outline: none;
+          background-color: #333;
+        }
 
-		/* Custom Styling for Dropdown Options */
-		#taskType option, 
-		#taskStatus option {
-			background: #2A2A2A; /* Dark background */
-			color: #E0E0E0; /* White text */
-			padding: 12px;
-		}
+        /* Custom Styling for Dropdown Options */
+        #taskType option, 
+        #taskStatus option {
+          background: #2A2A2A; /* Dark background */
+          color: #E0E0E0; /* White text */
+          padding: 12px;
+        }
 
 
 
         .btn {
             padding: 12px 20px;
-            background-color: #BB86FC;
+            background: linear-gradient(135deg, #bb86fc, #7564ff);
             color: white;
             font-weight: bold;
             border: none;
@@ -122,10 +128,29 @@
             background-color: #9B59FF;
         }
 
-        .btn-secondary {
-            background-color: #03DAC6;
+        #loadbtn  {
+            display: block;
+            padding: 12px 20px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #bb86fc, #7564ff);
             color: white;
-			width: 140px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            max-height: 40px;
+        }
+
+        #loadbtn:hover {
+            background-color: #9B59FF;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg,#03DAC6, #028f81);
+            color: white;
+			      width: 140px;
         }
 
         .btn-secondary:hover {
@@ -139,7 +164,7 @@
             margin-top: 20px;
         }
         #pushtoexcel:disabled {
-		        background-color: #7A687F;
+		        background: #7A687F;
 			      cursor: not-allowed;
 			      opacity: 0.7;
 		    }
@@ -161,7 +186,7 @@
 
         th {
             background-color: #BB86FC;
-            color: #121212;
+            color: white;
         }
 
         td {
@@ -178,49 +203,265 @@
                 max-width: 100%;
             }
         }
+        .navbar {
+            padding: 10px 0;
+
+
+        }
+        .navbar a {
+            position: relative;
+            color: #BB86FC !important;
+            margin: 5px;
+            flex: 1;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #BB86FC;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navbar a:hover::after {
+            transform: scaleX(1);
+        }
+                /* Table Styling */
+        #taskTableContainer table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #taskTableContainer th, #taskTableContainer td {
+            padding: 12px;
+            border: 1px solid #444;
+            text-align: center;
+            background-color: #1E1E1E;
+            color: white;
+        }
+
+        /* Dropdown Styling */
+        .status-dropdown {
+            padding: 12px;
+            width: 220px;
+            border: none;
+            background-color: #2A2A2A;
+            color: #BB86FC;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            appearance: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23BB86FC" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+
+        .status-dropdown:focus {
+            border: 2px solid #BB86FC;
+            outline: none;
+            background-color: #333;
+        }
+
+        /* Dropdown Options */
+        .status-dropdown option {
+            background: #2A2A2A;
+            color: #E0E0E0;
+            padding: 12px;
+        }
+
+        /* Save Button */
+        #saveButton {
+            display: none;
+            padding: 12px 20px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #bb86fc, #7564ff);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #filterbtn {
+            background: linear-gradient(135deg, #bb86fc, #7564ff);
+            padding: 12px 20px;
+            margin-left: 10px;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+
+        }
+
+        #saveButton:hover {
+            background-color: #9C67F2;
+        }
+
+        #taskTableContainer {
+            max-height: 600px; /* Adjust as needed */
+            overflow-y: auto; /* Enables vertical scrolling only when needed */
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #BB86FC #2A2A2A; /* Firefox thumb and track */
+        }
+
+        /* WebKit Browsers (Chrome, Safari, Edge) */
+        #taskTableContainer::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #taskTableContainer::-webkit-scrollbar-track {
+            background: #2A2A2A; /* Dark background */
+            border-radius: 8px;
+        }
+
+        #taskTableContainer::-webkit-scrollbar-thumb {
+            background: #BB86FC; /* Modern purple scrollbar */
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        #taskTableContainer::-webkit-scrollbar-thumb:hover {
+            background: #9C67F2;
+        }
+
+        .buttonsl{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            
+        }
+
+        .loader-container {
+            display: block;
+            width: 70%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            border-radius: 10px;
+            margin: 50px;
+        }
+
+        .loader-bar {
+            display: none;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(135deg, #bb86fc, #7564ff);
+            animation: loading 2s infinite ease-in-out;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        .buttonsl{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;}
+
+
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>EXCEL INPUT GENERATOR</h2>
-        <p>Enter Task ID, Task Description, Client In Comma Separated String </p>
-
-		<div class="input-group">
-			<input type="text" id="inputString" placeholder="Enter values">
-			<select id="taskType">
-				<option value="">Select Task Type</option>
-				<option value="Backend Changes">Backend Changes</option>
-				<option value="Customization">Customization</option>
-				<option value="Enhancement">Enhancement</option>
-				<option value="Bugs">Bugs</option>
-			</select>
-
-			<select id="taskStatus">
-				<option value="">Select Task Status</option>
-				<option value="Under Testing">Under Testing</option>
-				<option value="Completed">Completed</option>
-				<option value="Under Support">Under Support</option>
-				<option value="Not Feasible">Not Feasible</option>
-				<option value="Holded For Update">Holded For Update</option>
-				<option value="Work In Progress">Work In Progress</option>
-			</select>
-
-
-			<button class="btn" onclick="generateTable()">Generate Table</button>
-		</div>
-
-
-
-        <div id="tableContainer"></div>
-
-        <div class="btn-group">
-            <button class="btn btn-secondary" onclick="refreshPage()">Refresh</button>
-			      <button class="btn" id="pushtoexcel" onclick="pushToSheet()" disabled>Push to Excel</button>
+        <div class="navbar">
+            <a href="#" onclick="toggleSection('save')">Save Task</a>
+            <a href="#" onclick="toggleSection('view')">View Tasks</a>
         </div>
+        <div id="save" style="display: block;">
+            <h2>EXCEL INPUT GENERATOR</h2>
+            <p>Enter Task ID, Task Description, Client In Comma Separated String </p>
+            <div class="input-group">
+                <input type="text" id="inputString" placeholder="Enter values">
+                <select id="taskType">
+                    <option value="">Select Task Type</option>
+                    <option value="Backend Changes">Backend Changes</option>
+                    <option value="Customization">Customization</option>
+                    <option value="Enhancement">Enhancement</option>
+                    <option value="Bugs">Bugs</option>
+                </select>
+
+                <select id="taskStatus">
+                    <option value="">Select Task Status</option>
+                    <option value="Under Testing">Under Testing</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Under Support">Under Support</option>
+                    <option value="Not Feasible">Not Feasible</option>
+                    <option value="Holded For Update">Holded For Update</option>
+                    <option value="Work In Progress">Work In Progress</option>
+                </select>
+
+
+                <button class="btn" onclick="generateTable()">Generate Table</button>
+            </div>
+        
+
+
+
+            <div id="tableContainer"></div>
+
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="refreshPage()">Refresh</button>
+                    <button class="btn" id="pushtoexcel" onclick="pushToSheet()" disabled>Push to Excel</button>
+            </div>
+
+        </div>
+
+        <div id="view" style="display: none;">
+            <h2>Pending Tasks</h2>        
+            <div class="buttonsl">
+                <button onclick="loadTasks()" id="loadbtn" style="max-height: 40px;">Load Tasks</button>
+            <div class="loader-container">
+                <div class="loader-bar" id="loaderr"></div>
+            </div>
+            <div style="width: 120px;"></div>
+            </div>
+            <input type="text" id="filterinput" placeholder="Enter Task ID" >
+            <button onclick="filterTasks()" id="filterbtn">Filter</button>
+            <div id="taskTableContainer"></div>
+            <button id="saveButton" onclick="saveUpdatedStatuses()">Save Updates</button>`
+            
+        </div>
+    
+        
+
+
     </div>
 
 <script>
     let taskData = [];
+
+        function toggleSection(sectionId) {
+            if (sectionId  === "save") {
+                document.getElementById('view').style.display = 'none';
+                document.getElementById('save').style.display = 'block';
+            }
+            else{ 
+                document.getElementById('save').style.display = 'none';
+                document.getElementById('view').style.display = 'block';
+            }
+
+            
+        }
 
     function generateTable() {
         const input = document.getElementById('inputString').value.trim();
@@ -265,6 +506,96 @@
         document.getElementById('pushtoexcel').disabled = true;
 
     }
+
+    function loadTasks() {
+        document.getElementById('loaderr').style.display = 'block';
+        google.script.run.withSuccessHandler(displayTasks).getTasksForUpdate();
+    }
+
+    function displayTasks(tasks) {
+        const tableContainer = document.getElementById("taskTableContainer");
+        let tableHTML = `<table>
+            <tr><th>Task ID</th><th>Current Status</th><th>New Status</th></tr>`;
+
+        tasks.forEach((task, index) => {
+            tableHTML += `<tr>
+                <td>${task[0]}</td> <!-- Task ID -->
+                <td>${task[1]}</td> <!-- Current Status -->
+                <td>
+                    <select id="status-${index}" class="status-dropdown">
+                        <option value="Under Testing" ${task[1] === "Under Testing" ? "selected" : ""}>Under Testing</option>
+                        <option value="Under Support" ${task[1] === "Under Support" ? "selected" : ""}>Under Support</option>
+                        <option value="Work In Progress" ${task[1] === "Work In Progress" ? "selected" : ""}>Work In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </td>
+            </tr>`;
+        });
+
+        tableContainer.innerHTML = tableHTML;
+        document.getElementById('saveButton').style.display = 'block';
+        document.getElementById('loaderr').style.display = 'none';
+    }
+
+
+
+    function saveUpdatedStatuses() {
+        document.getElementById('loaderr').style.display = 'block';
+        let updatedTasks = [];
+        const rows = document.querySelectorAll("#taskTableContainer table tr");
+
+        rows.forEach((row, index) => {
+            if (index === 0) return; // Skip header row
+
+            const taskId = row.cells[0].innerText; // Task ID
+            const newStatus = row.cells[2].querySelector("select").value; // Selected Status
+
+            updatedTasks.push([taskId, newStatus]);
+        });
+
+        if (updatedTasks.length === 0) {
+            alert("No updates to save!");
+            return;
+        }
+
+        // Send all updates in a single call
+        google.script.run.withSuccessHandler(() => {
+          document.getElementById('loaderr').style.display = 'none';
+            alert("Statuses updated successfully!");
+        }).withFailureHandler(() => {
+            alert("Error updating statuses!");
+        }).updateStatusesInSheet(updatedTasks);
+        
+    }
+
+    function filterTasks() {
+        const inputField = document.getElementById("filterinput");
+        const inputTaskID = inputField.value.trim();
+        const rows = document.querySelectorAll("#taskTableContainer table tr");
+
+        if (!inputTaskID) {
+            // If input is empty, reset filter and show all tasks
+            rows.forEach(row => row.style.display = "table-row");
+            return;
+        }
+
+        rows.forEach((row, index) => {
+            if (index === 0) return; // Skip header row
+
+            const taskIDCell = row.cells[0]; // First column (Task ID)
+            if (taskIDCell) {
+                let taskID = taskIDCell.textContent.trim();
+                taskID = taskID.replace(/^Task #/, '').trim(); // Remove "Task #" prefix
+
+                // Show row if Task ID CONTAINS the input
+                row.style.display = taskID.includes(inputTaskID) ? "table-row" : "none";
+            }
+        });
+
+    }
+
+
+
 </script>
 
 </body>

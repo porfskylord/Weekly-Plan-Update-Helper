@@ -133,3 +133,57 @@ function ensureDropdownsExist(sheet, lastSheet) {
     }
   });
 }
+
+
+function getTasksForUpdate() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheets = ss.getSheets();
+  var statusColumn = 8; // Assuming "Status" is column H
+  var filteredTasks = [];
+
+  sheets.forEach(sheet => {
+    var data = sheet.getDataRange().getValues(); 
+
+    for (var i = 2; i < data.length; i++) { 
+      var status = data[i][statusColumn - 1]; 
+      
+      if (["Under Testing", "Under Support", "Work In Progress"].includes(status)) {
+        filteredTasks.push([data[i][1], status]); // Task ID & Status
+      }
+    }
+  });
+
+  console.log(filteredTasks);
+  return filteredTasks; // Returns only the required data
+}
+
+
+function updateStatusesInSheet(updatedTasks) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheets = ss.getSheets(); 
+  var statusColumn = 8; // Assuming "Status" is in column H (8th column)
+
+  sheets.forEach(sheet => {
+    var data = sheet.getDataRange().getValues(); 
+    var hasChanges = false; 
+
+    updatedTasks.forEach(([taskId, newStatus]) => {
+      for (var i = 2; i < data.length; i++) { 
+        if (String(data[i][1]) === taskId) { // Match Task ID (column B)
+          if (data[i][statusColumn - 1] !== newStatus) { // Update only if changed
+            sheet.getRange(i + 1, statusColumn).setValue(newStatus);
+            hasChanges = true;
+          }
+          break;
+        }
+      }
+    });
+
+    if (hasChanges) {
+      SpreadsheetApp.flush(); // Ensures data is written faster
+    }
+  });
+
+  return "Update Complete";
+}
+
